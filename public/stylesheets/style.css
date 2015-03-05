@@ -1,0 +1,452 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: gray;
+}
+
+a {
+  color: #00B7FF;
+}
+
+
+
+#allContents{
+	background-color: white;
+
+}
+
+
+#contents{
+	width:1250px;
+	height:700px;
+	border-top:10px solid gray;
+}
+
+
+#userContents{
+	width:750px;
+	height:800px;
+	border:10px solid gray;
+	position:absolute;
+	top:50px;
+	left:1300px;
+}
+
+
+/*Edit Area Style*/
+.config{
+	margin-left: 30px;
+	margin-top: 40px;
+
+
+}
+
+
+
+/*------------------------------------------------------------------
+								MENU
+------------------------------------------------------------------*/
+	#menuArea{
+		height:50px;
+		width:1250px;
+
+	}
+
+	.menu{		
+		float:left;
+		border:3px solid gray;
+		margin:0px;
+		padding:4px;
+		padding-top: 15px;
+		font-size: 25px;
+		height:30px;
+		width:120px;
+		text-align: center;
+	}
+
+	ul.menuUl{
+		margin:0px;
+	}
+
+
+	ul a {
+
+	}
+
+
+	.menuOn{
+		background-color: gray;
+		border:1px solid gray;
+		color:white;
+
+	}
+
+	.menuOff{
+
+	}
+
+
+
+
+
+
+
+/* ------------------------------------------------------------------
+/*  			TODO 
+--------------------------------------------------------------------*/
+		#todo-contents{
+			width:1250px;
+			height:600px;
+			
+		}
+
+
+
+		.TODO{
+			width:200px;
+			height:60px;
+			position:absolute;
+			font-size: 20px;
+			border:1px solid #000;
+
+			/*選択を不許可に（ダブルクリックのため）*/
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+
+		}
+
+		li{
+			list-style-type: none;
+		}
+
+
+
+		
+
+
+	/*チェックしたかどうか*/
+		.done-true{
+			color:gray;
+			text-decoration:line-through;
+		}
+
+
+	/*優先度でのスタイル変化*/
+
+
+
+
+	/* TODO AREA */
+	.todoArea{
+		position:absolute;
+		top:200px;
+		left:400px;
+		width:900px;
+		height:600px;
+		background-image: url("../images/white.jpg");
+	}
+
+
+
+
+/* Editer*/
+	.todo_editer{
+		border:1px double #000;
+		width:300px;
+		height:400px;
+	}
+
+	#newEditer{
+		
+
+	}
+
+	#afterEditer{
+		display: none;
+	}
+
+
+
+
+	/*Color Pick*/
+	.color-pannel-false{
+		width:20px;
+		height:20px;
+		border: 1px solid #000;
+		float: left;
+	}
+
+	.color-pannel-true{
+		width:20px;
+		height:20px;
+		border: 1px solid #ff4;
+		float: left;
+		filter:	light;
+	}
+
+
+
+
+/*-----------------------------------------
+				chat
+-------------------------------------------*/
+	#chatContents{
+		display:none;
+		margin-top:-10px;
+		margin-left: -10px;
+	}
+
+	#chatSideArea{
+		border:10px solid gray;
+		width:400px;
+		height:700px;
+		overflow: inherit;
+		
+	}
+
+	#chatArea{
+		border:10px solid gray;
+		width:830px;
+		height:700px;
+		position:absolute;
+		top:140px;
+		left:460px;
+	}
+
+	#chatTextArea{
+		border-top:5px solid gray;
+		width:830px;
+		height:100px;
+		position:absolute;
+		top:600px;
+		
+	}
+
+
+	#chatBody{
+		height:600px;
+		background-color:white;
+		overflow:auto;
+	}
+
+
+
+
+
+
+
+	/*  サイドエリア    */
+	.chatUserThum{
+		width:75px;
+		height:75px;
+	}
+
+	.chatUserName{
+		height:75px;
+		font-size: 50px;		
+		padding-left: 20px;
+	}
+
+	.chatUser{		
+		border:2px solid #000;
+	}
+
+	.chatUser:hover{
+		background-color: gray;
+
+	}
+
+	.chatUserSelected{
+		font-size: 50px;
+		height:75px;		
+		background-color: #80ffff;
+	}
+
+
+
+	
+
+
+	/*       chat Area     */	
+	#chatText{
+		position:absolute;		
+		width:600px;
+		height:90px;
+		left:100px;
+
+		-webkit-border-radius: 20px;
+		-webkit-box-shadow: 0px 0px 12px #000000;
+	}
+
+	#chatText:focus{
+		outline:none;
+
+	}
+
+
+	#fileSender{
+		position:absolute;
+		top:20px;
+		left:20px;
+
+	}
+
+	#fileSender:hover{
+		background-color: gray;
+
+	}
+
+
+	/*       通話ボタン        */
+
+
+
+
+
+	/*電話　*/
+
+	#callArea{
+		border:10px solid gray;
+		width:830px;
+		height:700px;
+		position:absolute;
+		top:140px;
+		left:460px;
+		display:none;
+	}
+
+
+	#chatButtonArea{
+		border-top:5px solid gray;
+		width:830px;
+		height:100px;
+		position:absolute;
+		top:600px;
+		
+	}
+
+
+
+	#callBody{
+		height:600px;
+		background-color:black;
+		overflow:auto;
+	}
+
+
+
+
+
+
+
+
+
+
+
+	#callButton{
+		position:absolute;
+		top:10px;
+		left:730px;
+	}
+
+	#callButton:hover{
+		background-color: gray;
+	}
+
+	#stopCallButton{
+		width:500px;
+		height:90px;
+		margin-left: 150px;
+		margin-top: 3px;
+		font-size: 60px;
+		text-align: center;
+		color:white;
+		padding-top: 3px;
+
+		/*  ジェネレータより http://www.css3.me/ */
+		background-color: red;border: 2px solid #999999;-moz-border-radius: 20px;-webkit-border-radius: 20px;border-radius: 20px;-moz-box-shadow: 0px 0px 12px #000000;
+		-webkit-box-shadow: 0px 0px 12px #000000;box-shadow: 0px 0px 12px #000000;filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#ff4b2e', endColorstr = '#590d01');
+		-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr = '#ff4b2e', endColorstr = '#590d01')";
+		background-image: -moz-linear-gradient(top, #ff4b2e, #590d01);background-image: -ms-linear-gradient(top, #ff4b2e, #590d01);background-image: -o-linear-gradient(top, #ff4b2e, #590d01);
+		background-image: -webkit-gradient(linear, center top, center bottom, from(#ff4b2e), to(#590d01));background-image: -webkit-linear-gradient(top, #ff4b2e, #590d01);
+		background-image: linear-gradient(top, #ff4b2e, #590d01);-moz-background-clip: padding;-webkit-background-clip: padding-box;background-clip: padding-box;	/*Use "background-clip: padding-box" when using rounded corners to avoid the gradient bleeding through the corners*/
+
+	}
+
+
+	#stopCallButton:hover{
+		-webkit-filter:grayscale(52%);
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+/*   チャットの中身    */
+	.chatTexts{
+		font-size: 30px;
+		margin-left: 150px;
+		margin-top: 15px;		
+		width: 500px;
+		-webkit-box-shadow: 1px 3px 10px #000000;
+		-moz-border-radius: 10px;    /* Firefox */
+   		-webkit-border-radius: 10px; /* Safari,Chrome */
+   		border-radius: 10px;         /* CSS3 */
+	}
+
+	.chatTexts-0:after{
+		border: 10px solid transparent;
+		border-left-color: green;
+		border-right-width: 0px;
+		right: -500px;
+		content: "";
+		display: block;
+		top: -10px;
+		position: relative;
+		width: 10px;
+	}
+
+	.chatTexts-1:after{
+		border: 10px solid transparent;
+		border-right-color: gray;
+		border-left-width: 0px;
+		right: 20px;
+		content: "";
+		display: block;
+		top: -10px;
+		position: relative;
+		width: 10px;
+	}
+
+	.chatTexts-0{
+		background-color: green;
+	}
+
+	.chatTexts-1{
+		background-color: gray;
+	}
+
+
+	.thumNail-0{
+		position: relative;
+		left: 680px;
+		top: -100px;
+		width: 100px;
+		height: 100px;
+	}
+
+	.thumNail-1{
+		position: relative;
+		left: 20px;
+		top: -100px;
+		width: 100px;
+		height: 100px;
+	}

@@ -1,0 +1,2 @@
+cd ./db
+mongod --dbpath ./

@@ -1,0 +1,23 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app"
+  },
+  "scripts": {
+            "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "express": "3.0.3",
+    "jade": "*",
+    "mongoose": "*",
+    "passport": "*",
+    "passport-twitter": "*"
+  },
+  "engines": {
+            "node": "0.10.X",
+            "npm": "1.4.X"
+          }
+
+}

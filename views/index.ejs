@@ -1,0 +1,265 @@
+<!DOCTYPE HTML>
+<html lang="ja" ng-app>
+<head>
+	<meta charset="UTF-8">
+	<title>業務システム</title>
+	
+	<!--JavaScript-->
+	<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+
+	<script src="./javascripts/UI.js"></script>
+	<script src="https://skyway.io/dist/0.3/peer.js"></script>
+	<script src="./javascripts/todo.js"></script>
+	<script src="./javascripts/videoChat.js"></script>
+	<script src="./javascripts/chat.js"></script>
+	<script src="./javascripts/main.js"></script>
+
+	<!--StyleSheet-->
+	<link rel="stylesheet" href="./stylesheets/style.css" type="text/css">
+
+
+
+
+
+</head>
+
+
+
+<body>
+
+<div id="allContents">
+
+
+<%= userData.email %>さん、おはようございます。
+
+
+<br><br>
+
+<!-----------------------------------------------------------------
+						Menu
+-------------------------------------------------------------------->
+
+
+<div id="menuArea">
+
+	<ul class="menuUl">
+		<li class="menu menuOn">TODO</li>
+		<li class="menu menuOff">Chat</li>
+	</ul>
+</div>
+
+
+
+<div id="contents">
+
+
+
+<!--------------------------------------------------------
+			        TODO List
+---------------------------------------------------------->
+
+
+<div id="todo-contents" >
+
+
+	<div ng-controller="todoCtrl" ng-mousemove="move($event)">
+		<div class="todoArea" ng-click="changeNew()">			
+
+			<div ng-repeat="task in tasks">
+				<div class="TODO" ng-click="front($index)"  ng-mousedown="mouseDown($index)" ng-mouseup="mouseUp($index)" id="TODO{{$index}}" ng-dblclick="changeMode($index)" style="top:{{task.yPos}}; left:{{task.xPos}}; background-color:{{task.color}};">
+					<ul>
+						<li>					
+							<input type="checkbox" ng-model="task.done" style="position:absolute;left:10px;top:10px;">
+							<span class="done-{{task.done}}">
+							{{task.body}}
+							</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		
+
+
+
+		</div>
+
+
+		<div id="newEditer" class="todo_editer config">
+			<form ng-submit="addNew()">
+
+			
+			
+				<h3>New Task Mode</h3>
+			
+				Body:
+			<br>
+				<input type="text" ng-model="newTaskBody">
+				<input type="submit" value="add">	
+
+
+				<!----------Color Picker-------->
+			<br>
+			<br>
+				Color:
+			<br>
+			
+				<div ng-repeat="color in colors">
+					<div class="color-pannel-{{color.checked}}" style="background-color:{{color.color}};" ng-click="changeColor($index)"></div>
+				</div>
+
+				{{currentColor}}
+
+			
+			</form>
+
+		</div>
+	
+
+
+		<div id="afterEditer" class="todo_editer config">
+		
+				<h3>Edit Task Mode</h3>
+		
+			Body:
+		<br>
+
+			<input type="text" ng-model="taskBody" ng-change="changeText()" >
+
+			
+
+			<!----------Color Picker-------->
+		<br>
+		<br>
+			Color:
+		<br>
+			
+			<div ng-repeat="color in _colors">
+				<div class="color-pannel-{{color.checked}}" style="background-color:{{color.color}};" ng-click="_changeColor($index)"></div>
+			</div>
+
+			{{_currentColor}}
+
+
+
+		</div>
+
+
+
+
+
+
+
+	</div>
+</div>	
+<!----------------TODO end ------------------------>
+
+
+
+<!----------------------------------------------------
+						Chat
+------------------------------------------------------>
+	<div id="chatContents" ng-controller="chatCtrl">
+		<div id="chatSideArea">
+			
+
+
+
+		</div>
+
+		<div id="chatArea">
+			<div id="chatTitle">
+
+			</div>	
+
+			<div id="chatBody">
+				
+			</div>
+
+
+			<div id="chatTextArea">
+				<div id="fileSender">
+					<img src="./images/file.png">
+					<input type="file" id="chatFile" style="display:none" onchange="fileSend(this)">
+				</div>
+
+				<input type="textArea" id="chatText" ng-model="newComment" ng-keydown="setChatText($event)">
+
+				<div id="callButton">
+					<img src="./images/call.gif" width="90px" height="70px">
+				</div>
+			</div>
+		</div>
+
+
+
+
+		<div id="callArea">
+				<div id="callBody">
+					<video id="video" autoplay muted style="display:none"></video>
+  					
+				</div>
+				<div id="callButtonArea">
+					<div id="stopCallButton" onClick="stopVideoChat()">終了</div>
+
+				</div>
+		</div>
+
+
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<!---------------contents end---------------------->
+
+
+
+<!----------------------------------------------
+				User
+------------------------------------------------>
+<div id="userContents">
+
+
+</div>
+
+
+
+
+
+
+</div>
+<!----------------All end-------------------------->
+
+
+
+
+<!------ユーザデータ----->
+
+<div style="display:none">
+	<li id="_thumNail">userData.thumNail</li>
+
+
+
+
+</body>
+
+
+
+
+
+
+
