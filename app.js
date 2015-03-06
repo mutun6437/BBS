@@ -13,7 +13,7 @@ var express = require('express')
 //MongoDB
 var MongoStore = require('connect-mongo')(express);
 
-var db = require('./model/database');
+//var db = require('./model/database');
 
 var model = require('./model/database.js'),
     User  = model.User;
