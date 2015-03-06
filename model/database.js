@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
-//var url = 'mongodb://localhost/user';
-var url = 'mongodb://182.163.52.82/user';
+var url = 'mongodb://localhost/user';
+//var url = 'mongodb://182.163.52.82/user';
 var db  = mongoose.createConnection(url, function(err, res){
     if(err){
         console.log('Error connected: ' + url + ' - ' + err);
