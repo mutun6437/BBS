@@ -4,6 +4,7 @@
 //現在表示されているチャットルーム
 var currentTarget=undefined;
 var rooms = [];
+var connectRooms = [];
 
 var selectedUser = undefined;
 
@@ -126,19 +127,24 @@ socket.on("connectRoom",function(roomId){
 	console.log("roomID"+roomId.roomId);
 	roomId = roomId.roomId;
 	var targets = String(roomId).split("-");
-	console.log("targets:"+targets[0]+targets[1]);
-	if(targets[0]==userName||targets[1]){
-		//接続相手がターゲットと同じであればRoomにはいります
-		console.log("in a room");
-		console.log("先に切断してから");
-		var con = io.connect(domain+'/room/'+roomId);
-		currentTarget = con;
-		con = setEventRooms(con);
-		rooms.push(con);
-		//console.log("rooms"+rooms);
+	console.log("targets:"+connectRooms);
+
+
+	if(connectRooms.indexOf(roomId) >= 0){
+		//window.alert('存在する！');  // アラートされる
+		console.log("接続されています");
+	}else{
+		if(targets[0]==userName||targets[1]==userName){
+			//接続相手がターゲットと同じであればRoomにはいります
+			console.log("in a room");
+			var con = io.connect(domain+'/room/'+roomId);
+			currentTarget = con;
+			con = setEventRooms(con);
+			rooms.push(con);
+			connectRooms.push(roomId);
+			//console.log("rooms"+rooms);
+		}
 	}
-
-
 
 });
 
