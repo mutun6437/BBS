@@ -13,6 +13,7 @@
 
 	<script src="./javascripts/UI.js"></script>
 	<script src="https://skyway.io/dist/0.3/peer.js"></script>
+	<script src="./javascripts/canvas.js"></script>
 	<script src="./javascripts/todo.js"></script>
 	<script src="./javascripts/videoChat.js"></script>
 	<script src="./javascripts/chat.js"></script>
@@ -67,7 +68,9 @@
 
 
 	<div ng-controller="todoCtrl" ng-mousemove="move($event)">
-		<div class="todoArea" ng-click="changeNew()">			
+		<div class="todoArea" ng-click="changeNew()">	
+
+			<canvas id="todoCanvas"></canvas>		
 
 			<div ng-repeat="task in tasks">
 				<div class="TODO" ng-click="front($index)"  ng-mousedown="mouseDown($index)" ng-mouseup="mouseUp($index)" id="TODO{{$index}}" ng-dblclick="changeMode($index)" style="top:{{task.yPos}}; left:{{task.xPos}}; background-color:{{task.color}};">
@@ -94,6 +97,33 @@
 			
 			
 				<h3>New Task Mode</h3>
+
+
+				Type:
+			<br>
+				<select id="newTaskType">
+					<option>至急</option>
+					<option>後回し</option>
+					<option>要相談</option>
+					<option>完了</option>
+				</select>
+			<br>
+			<br>
+
+
+
+				Day:
+			<br>
+				<input type="date" ng-model="newTaskDay" id="newTaskDay">
+				<select id="timeStr">
+					<option>から</option>
+					<option>迄</option>
+				</select>
+
+
+			<br>
+			<br>
+
 			
 				Body:
 			<br>
@@ -144,6 +174,11 @@
 			{{_currentColor}}
 
 
+
+		</div>
+
+
+		<div id="drawPanel" class="drawArea">
 
 		</div>
 

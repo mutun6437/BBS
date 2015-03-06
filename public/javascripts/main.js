@@ -11,6 +11,7 @@ var userIndex = 0;
 var userParent=undefined;
 
 window.onload = function(){
+	todoInit();
 	UIInit();
 	videoChatInit();
 	chatInit();

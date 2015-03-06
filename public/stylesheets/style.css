@@ -154,7 +154,7 @@ a {
 	.todo_editer{
 		border:1px double #000;
 		width:300px;
-		height:400px;
+		height:300px;
 	}
 
 	#newEditer{
@@ -186,6 +186,23 @@ a {
 	}
 
 
+	.drawArea{
+		border:1px double #000;
+		width:300px;
+		height:300px;
+		margin-top: 20px;
+		margin-left: 30px;
+
+	}
+
+	#drawPanel{
+
+	}
+
+	#todoCanvas{
+		width:900px;
+		height:600px;
+	}
 
 
 /*-----------------------------------------

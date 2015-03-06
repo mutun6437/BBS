@@ -16,6 +16,19 @@ var isEdit = false;
 //移動しているかどうか
 var isMove = false;
 
+
+function todoInit(){
+	
+
+	setTaskDate();
+	
+}
+
+
+
+
+
+
 var todoCtrl = function($scope,$http){
 
 
@@ -31,6 +44,13 @@ var todoCtrl = function($scope,$http){
 		{"body":"do this 4","done":false,"click":false,"xPos":30,"yPos":50,"zIndex":3}
 	*/
 	];
+
+
+
+
+
+
+
 
 	$scope.addNew = function(){
 		console.log($scope.newTaskBody);
@@ -227,3 +247,27 @@ var todoCtrl = function($scope,$http){
 }
 
 
+function setTaskDate(){
+	var date = new Date();
+	var year = setZeroDay(date.getFullYear());
+	var month = setZeroDay(parseInt(date.getMonth())+1);
+	var day = setZeroDay(date.getDate());
+	
+
+
+
+	var formattedDate = year + '-' + month+ '-' + day;
+	document.getElementById("newTaskDay").value=formattedDate;
+	console.log("日付を合わせます"+formattedDate);
+
+
+}
+
+
+function setZeroDay(num){
+
+	if(String(num).length==1){
+		num = "0"+num;
+	}
+	return num;
+}
