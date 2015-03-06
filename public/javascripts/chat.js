@@ -1,12 +1,15 @@
 //グローバル変数　　汚染に気をつけよう
 
-//グローバルソケット
-var socket = io.connect("http://25.90.198.41:3000");
+
 //現在表示されているチャットルーム
 var currentTarget=undefined;
 var rooms = [];
 
 var selectedUser = undefined;
+
+
+
+
 
 /////////////////
 //ログプロパティ
@@ -51,8 +54,6 @@ function chatInit(){
 
 
 	//URLからユーザ名を取得
-	var url = location.href;
-	var urls = url.split("?");
 	userName=urls[1];
 	console.log(userName);
 
@@ -130,7 +131,7 @@ socket.on("connectRoom",function(roomId){
 		//接続相手がターゲットと同じであればRoomにはいります
 		console.log("in a room");
 		console.log("先に切断してから");
-		var con = io.connect('http://25.90.198.41:3000/room/'+roomId);
+		var con = io.connect(domain+'/room/'+roomId);
 		currentTarget = con;
 		con = setEventRooms(con);
 		rooms.push(con);
