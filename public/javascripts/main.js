@@ -10,11 +10,21 @@ var onlineUser = [];
 var userIndex = 0;
 var userParent=undefined;
 
+
+
+
 window.onload = function(){
+	//TODOキャンバス
+	canvasInit();
+	//TODOリスト
 	todoInit();
+	//UI関係
 	UIInit();
+	//ビデオチャット関係
 	videoChatInit();
+	//チャット関係
 	chatInit();
+	//データ更新
 	dataUpdate();	
 
 }

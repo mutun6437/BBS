@@ -68,9 +68,10 @@
 
 
 	<div ng-controller="todoCtrl" ng-mousemove="move($event)">
-		<div class="todoArea" ng-click="changeNew()">	
+		<canvas id="todoCanvas" width="900px" height="600px"></canvas>
+		<div class="todoArea" ng-click="changeNew()" id="todoArea"> 
 
-			<canvas id="todoCanvas"></canvas>		
+					
 
 			<div ng-repeat="task in tasks">
 				<div class="TODO" ng-click="front($index)"  ng-mousedown="mouseDown($index)" ng-mouseup="mouseUp($index)" id="TODO{{$index}}" ng-dblclick="changeMode($index)" style="top:{{task.yPos}}; left:{{task.xPos}}; background-color:{{task.color}};">
@@ -179,7 +180,7 @@
 
 
 		<div id="drawPanel" class="drawArea">
-
+			鉛筆：<button type="button" onClick="changeDrawing()"　value="Pencil">描写開始</button>
 		</div>
 
 

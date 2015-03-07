@@ -3,21 +3,12 @@
 */
 
 function UIInit(){
-	console.log("da");
-
-
-
-
-
+	//console.log("da");
 /*　　メニューバー  */
 	var menu = document.getElementsByClassName("menu");
-	console.log(menu);
-
-	for(i=0;i<menu.length;i++){
-
-		
+	//console.log(menu);
+	for(i=0;i<menu.length;i++){		
 		menu[i].addEventListener("click",function(e){
-
 			for(i=0;i<menu.length;i++){
 				//先に全部をオフにしてから
 				menu[i].className=e.target.className="menu menuOff";
@@ -33,28 +24,29 @@ function UIInit(){
 				document.getElementById("todo-contents").style.display="none";
 				document.getElementById("chatContents").style.display="inherit";
 			}
-
-
-
 		},false);
-
 	}
 
 ////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
 }
 
 
 
 
 
+function changeDrawingUI(num){
+	if(num==0){
+		//キャンバスを下に
+		document.getElementById("todoArea").style.zIndex=2;
+		canvas.style.zIndex=1;
 
+
+	}else if(num == 1){
+		document.getElementById("todoArea").style.zIndex=1;
+		canvas.style.zIndex=2;
+	}
+
+}
 
 
 
