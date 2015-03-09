@@ -55,10 +55,11 @@ exports.login = function(req, res){
     var email    = req.query.email;
     var password = req.query.password;
 
+/*
     User.find({},function(err,doc){
       console.log(doc);
     });
-
+*/
 
     var query = { email: email,password:password};
     User.find(query, function(err, data){
@@ -67,7 +68,7 @@ exports.login = function(req, res){
             console.log("ログインエラー"+err);
         }
         if(data == ""){
-            //console.log("なかった");
+            console.log("なかった");
             res.render('login');
         }else{
           //User.find({},);
@@ -84,7 +85,7 @@ exports.add = function(req, res){
     //console.log("保存"+JSON.stringify(req.body));
 
 
-    var newUser = new UserData({email:req.body.email});
+    var newUser = new UserData({email:req.session.user});
     var newLoginUser = new User(req.body);
 
 
