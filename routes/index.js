@@ -11,10 +11,18 @@ exports.index = function(req, res){
 		//TODO 必要なデータだけ送るようにする
 		//
 
+if(req.session.user!==undefined){
+  res.render('index', { title: 'Express',userName:req.session.user});
+}else{
+  res.redirect("/login");
+}
 
-  	
-  		
 
+
+/*
+
+  	if(req.session.user!==undefined){	
+      console.log("セッションからログインします");
       UserData.find({email:req.session.user},function(err,doc){
         if(!err){
           console.log(doc);
@@ -29,19 +37,9 @@ exports.index = function(req, res){
           res.redirect("/login");
         }
       });
-
-
-
-
-/*
-
-  		if(UserData!=undefined){
-  			//ログインしていれば
-  			res.render('index', { title: 'Express',userData:UserData});
-  		}else{
-  			//ログインしていなければ
-  			res.redirect("/login");
-  		}
+    }else{
+      res.redirect("/login");
+    }
 */
 
 
@@ -55,15 +53,12 @@ exports.login = function(req, res){
     var email    = req.query.email;
     var password = req.query.password;
 
-/*
-    User.find({},function(err,doc){
-      console.log(doc);
-    });
-*/
 
-    var query = { email: email,password:password};
+    console.log("これは？"+email+password);
+
+    var query = {email:email,password:password};
     User.find(query, function(err, data){
-      //console.log("データ："+data);
+      console.log("データ："+data);
         if(err){
             console.log("ログインエラー"+err);
         }
@@ -72,9 +67,9 @@ exports.login = function(req, res){
             res.render('login');
         }else{
           //User.find({},);
-
-            req.session.user = email;
-            res.redirect('/?'+email);
+          console.log("通常ログインします");
+          req.session.user = email;
+          res.redirect('/?'+email);
         }
     });
 };
@@ -84,42 +79,43 @@ exports.login = function(req, res){
 exports.add = function(req, res){
     //console.log("保存"+JSON.stringify(req.body));
 
-
-    var newUser = new UserData({email:req.session.user});
-    var newLoginUser = new User(req.body);
+    //console.log("Body"+JSON.stringify(req.body));
+    console.log("query"+req.body.email);
+    var newUser = new User({email:req.body.email,password:req.body.password});
+    var newLoginUser = new UserData({email:req.body.email,userName:req.body.email});
 
 
     //すでにとうろくされていないか
     console.log("ddd"+req.body.email);
 
-    User.find({email:req.body.email},function(err,doc){
+    User.find({email:req.body.user,password:req.body.password},function(err,doc){
       console.log("add"+doc);
       if(!err){
-
           if(doc==""){
             //検索しても見つからない
             console.log("新規登録します");
-
             newUser.save(function(err){
                 if(err){
 
                 }else{
                   console.log("ユーザデータの作成");
+                  req.session.user = newUser.email;
+
+                  newLoginUser.save(function(err){
+                    if(err){
+                        console.log("新規登録エラー"+err);
+                        res.redirect('back');
+                    }else{
+                        console.log("ログイン完了");
+                        res.redirect('/?'+newUser.email);
+                    }
+                  });
+
                 }
             });
 
 
-
-            newLoginUser.save(function(err){
-              if(err){
-                  console.log("新規登録エラー"+err);
-                  res.redirect('back');
-              }else{
-                  console.log("ログイン完了");
-                  req.session.user = newUser.email;
-                  res.redirect('/?'+newUser.email);
-              }
-            });
+            
 
 
           }else{
